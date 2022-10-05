@@ -18,7 +18,7 @@ void MSTK_voidInit(void)
 
 #endif
 
-	//interrupt enable of disable
+	//interrupt enable or disable
 
 #if STK_INTERRUPT_EN == ENABLE
 	SET_BIT(STK->CTRL,TICKINT);
@@ -99,7 +99,7 @@ u32 MSTK_u32GetRemainingTime(void)
 	return STK->VAL;
 }
 
-void  Systick_Handler(void)
+void  SysTick_Handler(void)
 {
 	if(GS_STK_CallBack!=NULL)
 	{

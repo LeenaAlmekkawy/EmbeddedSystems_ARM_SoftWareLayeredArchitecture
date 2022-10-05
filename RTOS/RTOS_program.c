@@ -18,43 +18,43 @@
 
 
 Task SystemTasks[MAX_NUM_OF_TASKS]={0};
-u8  Systempriority[MAX_NUM_OF_TASKS]={0};
-u8 TaskTiming[MAX_NUM_OF_TASKS];
+u32  Systemperiodicity[MAX_NUM_OF_TASKS]={0};
+u32 TaskTiming[MAX_NUM_OF_TASKS];
 Task Empty= {0};
 
 void RTOS_voidStartOS(void)
 {
 	MSTK_voidSetIntervalPeriodic(TickTime,RTOS_voidScheduler);
+	while(1){}
 }
 
 
-u8 RTOS_u8CreateTask( void(*Copy_Handler)(void)  , u8 Copy_u8periodicity , u8 Copy_u8Priority,u8 Copy_u8FirstDelay )
+void RTOS_u8CreateTask( void(*Copy_Handler)(void)  , u32 Copy_u32periodicity , u8 Copy_u8Priority,u32 Copy_u32FirstDelay )
 {
-	u8 Local_u8ErrorState=0;
+
 	//verify that the priority index within the correct range
 	if(Copy_u8Priority < MAX_NUM_OF_TASKS)
 	{
 		if(SystemTasks[Copy_u8Priority].TaskHandler==0)
 		{
 			SystemTasks[Copy_u8Priority].TaskHandler= Copy_Handler;
-			SystemTasks[Copy_u8Priority].Periodicity= Copy_u8periodicity ;
+			SystemTasks[Copy_u8Priority].Periodicity= Copy_u32periodicity ;
 			SystemTasks[Copy_u8Priority].TaskRunState= Running;
-			Systempriority[Copy_u8Priority]=Copy_u8periodicity;
-			TaskTiming[Copy_u8Priority]= Copy_u8FirstDelay;
+			Systemperiodicity[Copy_u8Priority]=Copy_u32periodicity;
+			TaskTiming[Copy_u8Priority]= Copy_u32FirstDelay;
 		}
 		else
 		{
 			//The required priority is already reserved
-			Local_u8ErrorState=2;
 
 		}
 	}
 	else
 	{
 		//wrong priority
-		Local_u8ErrorState=1;
+
 	}
-	return Local_u8ErrorState;
+
 }
 
 void RTOS_voidScheduler(void)
@@ -74,7 +74,7 @@ void RTOS_voidScheduler(void)
                       //run the task
 					 SystemTasks[Local_u8Counter].TaskHandler();
 					 //Reload the periodicity
-					 TaskTiming[Local_u8Counter]=Systempriority[Local_u8Counter];
+					 TaskTiming[Local_u8Counter]=Systemperiodicity[Local_u8Counter];
 
 				}
 				else

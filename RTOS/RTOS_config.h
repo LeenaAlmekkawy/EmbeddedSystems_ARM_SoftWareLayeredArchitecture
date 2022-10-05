@@ -11,6 +11,6 @@
 #define RTOS_CONFIG_H
 
 #define MAX_NUM_OF_TASKS     20
-#define TickTime             10
+#define TickTime             2000
 
 #endif

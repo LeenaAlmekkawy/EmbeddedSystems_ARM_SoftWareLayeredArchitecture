@@ -16,7 +16,7 @@
 typedef struct
 {
 	void (*TaskHandler)(void) ;
-	u8   Periodicity;
+	u32   Periodicity;
 	u8   FirstDelay;
 	/*
 	 * 1-Suspended

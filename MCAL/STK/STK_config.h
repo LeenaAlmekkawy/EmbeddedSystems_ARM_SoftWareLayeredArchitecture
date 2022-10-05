@@ -17,6 +17,6 @@
  * 1- ENABLE
  * 2- DISABLE
  */
-#define STK_INTERRUPT_EN      DISABLE
+#define STK_INTERRUPT_EN      ENABLE
 
 #endif
