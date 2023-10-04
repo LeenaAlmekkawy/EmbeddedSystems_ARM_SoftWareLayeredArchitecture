@@ -33,7 +33,12 @@ void MSTK_voidInit(void)
 
 void MSTK_voidStopTimer(void)
 {
-	CLR_BIT(STK->CTRL,STK_ENABLE);
+	CLR_BIT(STK->CTRL,TICKINT);
+}
+
+void MSTK_voidStartTimer(void)
+{
+	SET_BIT(STK->CTRL,TICKINT);
 }
 
 void MSTK_voidSetBusyWait(u32 Copy_u32Ticks)
@@ -144,6 +149,7 @@ void MSTK_voidSetTime_us_2MHZ(u32 Copy_u32Time)
 {  for(u32 Local_u32Counter=0 ;Local_u32Counter<Copy_u32Time;Local_u32Counter++)
    {
 	u32 Local_u32Ticks=2;
+	//u32 Local_u32Ticks=16;
 	//reset timer value and clear count  flag
 	STK->VAL=0;
 

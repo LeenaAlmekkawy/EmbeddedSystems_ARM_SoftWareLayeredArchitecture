@@ -51,7 +51,6 @@ typedef struct
 	u32 Reserved15;
 	u32 DCKCFGR;
 
-
 }RCC_MemMap_t;
 
 #define RCC ((volatile RCC_MemMap_t*)(RCC_BASE_ADD ))

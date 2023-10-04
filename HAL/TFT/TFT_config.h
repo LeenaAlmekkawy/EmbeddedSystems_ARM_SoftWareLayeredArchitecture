@@ -2,14 +2,19 @@
 /*********************************************/
 /*********  Author: Leena Almekkawy  *********/
 /*********  Layer: HAL               *********/
-/*********  SWC: KPD                 *********/
+/*********  SWC: TFT                 *********/
 /*********  Version: 1.00            *********/
 /*********************************************/
 /*********************************************/
-#ifndef KPD_PRIVATE_H
-#define KPD_PRIVATE_H
+#ifndef TFT_CONFIG_H
+#define TFT_CONFIG_H
 
+#define TFT_A0_PORT         GPIO_PORTA
+#define TFT_A0_PIN          PIN1
 
+#define TFT_RST_PORT        GPIO_PORTA
+#define TFT_RST_PIN         PIN0
 
+#define TFT_IMAGE_SIZE      20480
 
 #endif

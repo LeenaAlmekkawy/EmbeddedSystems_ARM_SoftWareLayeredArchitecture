@@ -1,3 +1,11 @@
+/*********************************************/
+/*********************************************/
+/*********  Author: Leena Almekkawy  *********/
+/*********  Layer: HAL               *********/
+/*********  SWC: SSD                 *********/
+/*********  Version: 1.00            *********/
+/*********************************************/
+/*********************************************/
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
 
@@ -15,11 +23,10 @@ void SSD_voidInit(SSD_st* Copy_pstSSDInfo)
 	GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN2 ,&SSD);
 	GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN3 ,&SSD);
 	GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN4 ,&SSD);
-	//GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN5 ,&SSD);
-	//GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN6 ,&SSD);
-	//GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN7 ,&SSD);
-	GPIO_voidSetPinDirection (PORTA,Copy_pstSSDInfo->SSD_PIN5 ,&SSD);
-    GPIO_voidSetPinDirection (PORTA,Copy_pstSSDInfo->SSD_PIN6 ,&SSD);
+	GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN5 ,&SSD);
+	GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN6 ,&SSD);
+	GPIO_voidSetPinDirection (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN7 ,&SSD);
+
 }
 void SSD_voidSetNumber(u8 Copy_u8Number, SSD_st* Copy_pstSSDInfo) {
 
@@ -35,11 +42,10 @@ void SSD_voidSetNumber(u8 Copy_u8Number, SSD_st* Copy_pstSSDInfo) {
 			GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN2 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],2));
 			GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN3 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],3));
 			GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN4 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],4));
-		//	GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN5 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],5));
-			//GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN6 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],6));
-			//GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN7 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],7));
-			GPIO_voidSetPinValue (PORTA,Copy_pstSSDInfo->SSD_PIN5 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],5));
-			GPIO_voidSetPinValue (PORTA,Copy_pstSSDInfo->SSD_PIN6 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],6));
+		    GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN5 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],5));
+			GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN6 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],6));
+			GPIO_voidSetPinValue (Copy_pstSSDInfo->SSD_PORT,Copy_pstSSDInfo->SSD_PIN7 ,GET_BIT(~Localu32_NumbersArray[Copy_u8Number],7));
+
 		}
 		else if (Copy_pstSSDInfo->SSD_ComType == COMMON_CATHODE) {
 

@@ -1,13 +1,21 @@
+/*********************************************/
+/*********************************************/
+/*********  Author: Leena Almekkawy  *********/
+/*********  Layer: HAL               *********/
+/*********  SWC: KPD                 *********/
+/*********  Version: 1.00            *********/
+/*********************************************/
+/*********************************************/
 #ifndef KBD_CONFIG_H
 #define KBD_CONFIG_H
 
-#define KPD_COLUMNS_PORT  PORTB
-#define KPD_COLUMN0_PIN PIN0
-#define KPD_COLUMN1_PIN PIN1
-#define KPD_COLUMN2_PIN PIN2
-#define KPD_COLUMN3_PIN PIN5
+#define KPD_COLUMNS_PORT  GPIO_PORTB
+#define KPD_COLUMN0_PIN   PIN0
+#define KPD_COLUMN1_PIN   PIN1
+#define KPD_COLUMN2_PIN   PIN2
+#define KPD_COLUMN3_PIN   PIN5
 
-#define KPD_ROWS_PORT  PORTB
+#define KPD_ROWS_PORT  GPIO_PORTB
 
 #define KPD_ROW0_PIN PIN6
 #define KPD_ROW1_PIN PIN7

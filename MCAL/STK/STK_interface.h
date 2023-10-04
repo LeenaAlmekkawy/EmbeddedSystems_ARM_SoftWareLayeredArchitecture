@@ -11,6 +11,8 @@ void MSTK_voidInit(void);
 
 void MSTK_voidStopTimer(void);
 
+void MSTK_voidStartTimer(void);
+
 void MSTK_voidSetBusyWait(u32 Copy_u32Ticks);
 
 void MSTK_voidSetIntervalSingle(u32 Copy_u32Ticks, void(*CallbackFunction)(void));

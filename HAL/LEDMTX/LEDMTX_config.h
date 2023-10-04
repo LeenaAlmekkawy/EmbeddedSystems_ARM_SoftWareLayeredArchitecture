@@ -1,3 +1,11 @@
+/*********************************************/
+/*********************************************/
+/*********  Author: Leena Almekkawy  *********/
+/*********  Layer: HAL               *********/
+/*********  SWC: LEDMTX              *********/
+/*********  Version: 1.1             *********/
+/*********************************************/
+/*********************************************/
 #ifndef LEDMTX_CONFIG_H
 #define LEDMTX_CONFIG_H
 
@@ -10,7 +18,7 @@
 #define NO_COLS           8//do not forget to change it in interface.hd
 #define NO_ROWS           8
 
-#define COLS_PORT         PORTA
+#define COLS_PORT         GPIO_PORTA
 
 #define COLS_PIN0         PIN0
 #define COLS_PIN1         PIN1
@@ -21,7 +29,7 @@
 #define COLS_PIN6         PIN6
 #define COLS_PIN7         PIN7
 
-#define ROWS_PORT         PORTB
+#define ROWS_PORT         GPIO_PORTB
 
 #define ROWS_PIN0         PIN0
 #define ROWS_PIN1         PIN1

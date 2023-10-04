@@ -30,6 +30,7 @@
 #define RCC_EN_GPIOB         1
 #define RCC_EN_GPIOC         2
 #define RCC_EN_SYSCFG        14 //APB2
+#define RCC_EN_SPI1          12 //APB2
 
 #define RCC_PLLSRC           22
 

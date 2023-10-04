@@ -19,7 +19,7 @@ void GPIO_voidSetPinDirection (u8 Copy_u8PortName, u8 Copy_u8PinNumber, PIN_st* 
 {
     switch (Copy_u8PortName)
     {
-    case PORTA:
+    case GPIO_PORTA:
         switch( Copy_psPinInfo->PIN_MOD)
         {
         case INPUT:
@@ -84,7 +84,7 @@ void GPIO_voidSetPinDirection (u8 Copy_u8PortName, u8 Copy_u8PinNumber, PIN_st* 
         }
         break;
 
-    case PORTB:
+    case  GPIO_PORTB:
         switch( Copy_psPinInfo->PIN_MOD)
         {
         case INPUT:
@@ -150,7 +150,7 @@ void GPIO_voidSetPinDirection (u8 Copy_u8PortName, u8 Copy_u8PinNumber, PIN_st* 
 
         break;
 
-    case PORTC:
+    case  GPIO_PORTC:
         switch( Copy_psPinInfo->PIN_MOD)
         {
         case INPUT:
@@ -218,12 +218,61 @@ void GPIO_voidSetPinDirection (u8 Copy_u8PortName, u8 Copy_u8PinNumber, PIN_st* 
     }
 }
 
+void GPIO_voidSetAlternativeFunction(u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8 Copy_u8AltFun)
+{
+	if(Copy_u8PinNumber<8)
+	{
+	      switch(Copy_u8PortName)
+	       {
+	        case  GPIO_PORTA:
+	             GPIOA->AFRL &= ~(0b1111<<(Copy_u8PinNumber*4));
+	             GPIOA->AFRL |= (Copy_u8AltFun<<(Copy_u8PinNumber*4));
+	            break;
+
+	        case  GPIO_PORTB:
+	             GPIOB->AFRL &= ~(0b1111<<(Copy_u8PinNumber*4));
+	             GPIOB->AFRL |= (Copy_u8AltFun<<(Copy_u8PinNumber*4));
+
+	            break;
+
+	        case  GPIO_PORTC:
+	             GPIOC->AFRL &= ~(0b1111<<(Copy_u8PinNumber*4));
+	             GPIOC->AFRL |= (Copy_u8AltFun<<(Copy_u8PinNumber*4));
+
+	            break;
+	       }
+	}
+	else if(Copy_u8PinNumber>=8&& Copy_u8PinNumber<16)
+	{
+	      switch(Copy_u8PortName)
+	       {
+	        case  GPIO_PORTA:
+	             GPIOA->AFRL &= ~(0b1111<<( (Copy_u8PinNumber-8) *4) );
+	             GPIOA->AFRL |= (Copy_u8AltFun<<(  (Copy_u8PinNumber-8)*4));
+	            break;
+
+	        case  GPIO_PORTB:
+	             GPIOB->AFRL &= ~(0b1111<<( (Copy_u8PinNumber-8)*4));
+	             GPIOB->AFRL |= ~(Copy_u8AltFun<<( (Copy_u8PinNumber-8)*4));
+
+	            break;
+
+	        case  GPIO_PORTC:
+	             GPIOC->AFRL &= ~(0b1111<<( (Copy_u8PinNumber-8)*4));
+	             GPIOC->AFRL |= (Copy_u8AltFun<<( (Copy_u8PinNumber-8)*4));
+
+	            break;
+	       }
+	}
+	asm("NOP");
+}
+
 void GPIO_voidSetPinValue     (u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8 Copy_u8PinValue)
 {
     if(Copy_u8PortName< PORT_RANGE && Copy_u8PinNumber<PIN_RANGE)
     {
-        if(  (Copy_u8PortName==PORTA &&(Copy_u8PinNumber==PIN13||Copy_u8PinNumber==PIN14) ) ||
-                (Copy_u8PortName==PORTA &&(Copy_u8PinNumber==PIN13||Copy_u8PinNumber==PIN14) )  )
+        if(  (Copy_u8PortName== GPIO_PORTA &&(Copy_u8PinNumber==PIN13||Copy_u8PinNumber==PIN14) ) ||
+                (Copy_u8PortName== GPIO_PORTB &&(Copy_u8PinNumber==PIN3||Copy_u8PinNumber==PIN4) )  )
         {
             //error
         }
@@ -231,7 +280,7 @@ void GPIO_voidSetPinValue     (u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8 Copy_
         {
             switch(Copy_u8PortName)
             {
-            case PORTA:
+            case  GPIO_PORTA:
                 switch(Copy_u8PinValue)
                 {
                 case HIGH:
@@ -246,7 +295,7 @@ void GPIO_voidSetPinValue     (u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8 Copy_
                 }
                 break;
 
-            case PORTB:
+            case  GPIO_PORTB:
                 switch(Copy_u8PinValue)
                 {
                 case HIGH:
@@ -261,7 +310,7 @@ void GPIO_voidSetPinValue     (u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8 Copy_
                 }
                 break;
 
-            case PORTC:
+            case  GPIO_PORTC:
                 switch(Copy_u8PinValue)
                 {
                 case HIGH:
@@ -288,8 +337,8 @@ u8   GPIO_u8GetPinValue       (u8 Copy_u8PortName, u8 Copy_u8PinNumber)
     u8 Local_Variable=0x55;
     if(Copy_u8PortName< PORT_RANGE && Copy_u8PinNumber<PIN_RANGE)
     {
-        if(  (Copy_u8PortName==PORTA &&(Copy_u8PinNumber==PIN13||Copy_u8PinNumber==PIN14) ) ||
-                (Copy_u8PortName==PORTA &&(Copy_u8PinNumber==PIN13||Copy_u8PinNumber==PIN14) )  )
+        if(  (Copy_u8PortName== GPIO_PORTA &&(Copy_u8PinNumber==PIN13||Copy_u8PinNumber==PIN14) ) ||
+                (Copy_u8PortName== GPIO_PORTA &&(Copy_u8PinNumber==PIN13||Copy_u8PinNumber==PIN14) )  )
         {
             //error
         }
@@ -297,15 +346,15 @@ u8   GPIO_u8GetPinValue       (u8 Copy_u8PortName, u8 Copy_u8PinNumber)
         {
             switch(Copy_u8PortName)
             {
-            case PORTA:
+            case  GPIO_PORTA:
                 Local_Variable=GET_BIT(GPIOA->IDR,Copy_u8PinNumber);
                 break;
 
-            case PORTB:
+            case  GPIO_PORTB:
                 Local_Variable=GET_BIT(GPIOB->IDR,Copy_u8PinNumber);
                 break;
 
-            case PORTC:
+            case  GPIO_PORTC:
                 Local_Variable=GET_BIT(GPIOC->IDR,Copy_u8PinNumber);
                 break;
             }
@@ -327,15 +376,15 @@ u32   GPIO_u32GetPortValue      (u8 Copy_u8PortName)
 
         switch(Copy_u8PortName)
         {
-        case PORTA:
+        case  GPIO_PORTA:
             Local_u32PortValue=GPIOA->IDR;
             break;
 
-        case PORTB:
+        case  GPIO_PORTB:
             Local_u32PortValue=GPIOB->IDR;
             break;
 
-        case PORTC:
+        case  GPIO_PORTC:
             Local_u32PortValue=GPIOC->IDR;
             break;
         }

@@ -10,9 +10,9 @@
 #ifndef GPIO_INTERFACE_H
 #define GPIO_INTERFACE_H
 
-#define PORTA         0
-#define PORTB         1
-#define PORTC         2
+#define GPIO_PORTA         0
+#define GPIO_PORTB         1
+#define GPIO_PORTC         2
 
 
 #define PIN0          0
@@ -85,6 +85,23 @@
 #define PD           2
 
 
+#define GPIO_AF_0    0
+#define GPIO_AF_1    1
+#define GPIO_AF_2    2
+#define GPIO_AF_3    3
+#define GPIO_AF_4    4
+#define GPIO_AF_5    5
+#define GPIO_AF_6    6
+#define GPIO_AF_7    7
+#define GPIO_AF_8    8
+#define GPIO_AF_9    9
+#define GPIO_AF_10   10
+#define GPIO_AF_11   11
+#define GPIO_AF_12   12
+#define GPIO_AF_13   13
+#define GPIO_AF_14   14
+#define GPIO_AF_15   15
+
 typedef struct
 {
     u8 PIN_MOD;
@@ -115,6 +132,7 @@ typedef struct
 }PIN_st;
 
 void GPIO_voidSetPinDirection (u8 Copy_u8PortName, u8 Copy_u8PinNumber, PIN_st*  Copy_psPinInfo);
+void GPIO_voidSetAlternativeFunction(u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8 Copy_u8AltFun);
 void GPIO_voidSetPinValue     (u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8 Copy_u8PinValue);
 u8   GPIO_u8GetPinValue       (u8 Copy_u8PortName, u8 Copy_u8PinNumber);
 u8   GPIO_u8GetPortValue      (u8 Copy_u8PortName);
