@@ -247,19 +247,19 @@ void GPIO_voidSetAlternativeFunction(u8 Copy_u8PortName, u8 Copy_u8PinNumber, u8
 	      switch(Copy_u8PortName)
 	       {
 	        case  GPIO_PORTA:
-	             GPIOA->AFRL &= ~(0b1111<<( (Copy_u8PinNumber-8) *4) );
-	             GPIOA->AFRL |= (Copy_u8AltFun<<(  (Copy_u8PinNumber-8)*4));
+	             GPIOA->AFRH &= ~(0b1111<<( (Copy_u8PinNumber-8) *4) );
+	             GPIOA->AFRH |= (Copy_u8AltFun<<(  (Copy_u8PinNumber-8)*4));
 	            break;
 
 	        case  GPIO_PORTB:
-	             GPIOB->AFRL &= ~(0b1111<<( (Copy_u8PinNumber-8)*4));
-	             GPIOB->AFRL |= ~(Copy_u8AltFun<<( (Copy_u8PinNumber-8)*4));
+	             GPIOB->AFRH &= ~(0b1111<<( (Copy_u8PinNumber-8)*4));
+	             GPIOB->AFRH |= ~(Copy_u8AltFun<<( (Copy_u8PinNumber-8)*4));
 
 	            break;
 
 	        case  GPIO_PORTC:
-	             GPIOC->AFRL &= ~(0b1111<<( (Copy_u8PinNumber-8)*4));
-	             GPIOC->AFRL |= (Copy_u8AltFun<<( (Copy_u8PinNumber-8)*4));
+	             GPIOC->AFRH &= ~(0b1111<<( (Copy_u8PinNumber-8)*4));
+	             GPIOC->AFRH |= (Copy_u8AltFun<<( (Copy_u8PinNumber-8)*4));
 
 	            break;
 	       }

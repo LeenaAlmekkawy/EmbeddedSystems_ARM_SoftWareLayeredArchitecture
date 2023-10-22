@@ -56,18 +56,22 @@ typedef struct
 #define RCC ((volatile RCC_MemMap_t*)(RCC_BASE_ADD ))
 
 
-#define RCC_HSEBYP     18
-#define RCC_HSEON      16
-#define RCC_HSION      0
-#define RCC_LSEBYP     2
-#define RCC_CSSON      19
-#define RCC_PLLON     24
-#define RCC_SW0        0  
-#define RCC_SW1        1  
-#define RCC_PLLSRC     22
-#define PLLP_MASK      0x30000
-#define PLLN_MASK      0x7FC0
-#define PLLM_MASK      0x1F
-#define PLLQ_MASK      0xF000000
+#define RCC_HSEBYP                18
+#define RCC_HSEON                 16
+#define RCC_HSION                 0
+#define RCC_LSEBYP                2
+#define RCC_CSSON                 19
+#define RCC_PLLON                 24
+#define RCC_SW0                   0
+#define RCC_SW1                   1
+#define RCC_PLLSRC                22
+#define PLLP_MASK                 0x30000
+#define PLLN_MASK                 0x7FC0
+#define PLLM_MASK                 0x1F
+#define PLLQ_MASK                 0xF000000
+
+#define AHB_PRESCALER_MASK        0b1111
+#define APB1_PRESCALER_MASK       0b111
+#define APB2_PRESCALER_MASK       0b111
 
 #endif

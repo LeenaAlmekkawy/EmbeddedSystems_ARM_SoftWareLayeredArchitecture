@@ -17,5 +17,7 @@ typedef double          f64;
 typedef unsigned long long int u64;
 typedef signed long long int s64;
 
+#define  NULL_ptr     (void*)0x0
+
 #endif 
 

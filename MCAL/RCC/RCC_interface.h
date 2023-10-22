@@ -29,8 +29,11 @@
 #define RCC_EN_GPIOA         0  //AHB1
 #define RCC_EN_GPIOB         1
 #define RCC_EN_GPIOC         2
-#define RCC_EN_SYSCFG        14 //APB2
-#define RCC_EN_SPI1          12 //APB2
+
+//APB2
+#define RCC_EN_SYSCFG        14
+#define RCC_EN_SPI1          12
+#define RCC_EN_USART1        4
 
 #define RCC_PLLSRC           22
 
@@ -38,12 +41,16 @@
 #define HSE_FRE              25
 #define SYS_MAX_FRE          84
 
+
+
  void MRCC_voidSystemClkInit(void);
 
  void MRCC_voidEnablePerClk(u8 Copy_u8Bus, u8 Copy_u8Per);
 
  void MRCC_voidDisablePerClk(u8 Copy_u8Bus, u8 Copy_u8Per);
 
+ void MRCC_voidSetBusesPrescaler(u8 Copy_u8AHBPrescaler,u8 Copy_u8APB1Prescaler,u8 Copy_u8APB2Prescaler);
 
-       
+
+
 #endif

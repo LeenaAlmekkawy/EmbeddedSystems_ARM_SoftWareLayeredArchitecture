@@ -41,11 +41,14 @@ void MRCC_voidSystemClkInit(void)
     SET_BIT(RCC->CR, RCC_HSEON);
     SET_BIT(RCC->CFGR, RCC_SW0);
     CLR_BIT(RCC->CFGR, RCC_SW1);
+    MRCC_voidSetBusesPrescaler(AHB_PRESCALER, APB1_PRESCALER, APB2_PRESCALER);
 
 #elif RCC_CLK_SOURCE==HSI
     SET_BIT(RCC->CR, RCC_HSION);
     CLR_BIT(RCC->CFGR, RCC_SW0);
     CLR_BIT(RCC->CFGR, RCC_SW1);
+
+    MRCC_voidSetBusesPrescaler(AHB_PRESCALER, APB1_PRESCALER, APB2_PRESCALER);
 
 #elif RCC_CLK_SOURCE==PLL
 
@@ -152,5 +155,21 @@ void MRCC_voidDisablePerClk(u8 Copy_u8Bus, u8 Copy_u8Per)
     {
         //out of range
     }
+}
+
+void MRCC_voidSetBusesPrescaler(u8 Copy_u8AHBPrescaler,u8 Copy_u8APB1Prescaler,u8 Copy_u8APB2Prescaler)
+{   //AHB Prescaler
+	RCC->CFGR &=(~(AHB_PRESCALER_MASK<<4));
+	RCC->CFGR |=((Copy_u8AHBPrescaler)<<4);
+
+	//APB1 Prescaler
+	RCC->CFGR &=(~(APB1_PRESCALER_MASK<<10));
+	RCC->CFGR |=((Copy_u8APB1Prescaler)<<10);
+
+	//APB2 Prescaler
+	RCC->CFGR &=(~(APB2_PRESCALER_MASK<<13));
+	RCC->CFGR |=((Copy_u8APB2Prescaler)<<13);
+
+
 }
 

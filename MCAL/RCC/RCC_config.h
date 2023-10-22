@@ -10,7 +10,7 @@
 #ifndef RCC_CONFIG_H
 #define RCC_CONFIG_H
 
-/* clock 
+/* clock
 
    1-HSI
    2-HSE
@@ -71,6 +71,35 @@
 #define RCC_PLLM               50
 
 #define RCC_PLLQ               10
+
+
+/*
+0xxx: system clock not divided
+1000: system clock divided by 2
+1001: system clock divided by 4
+1010: system clock divided by 8
+1011: system clock divided by 16
+1100: system clock divided by 64
+1101: system clock divided by 128
+1110: system clock divided by 256
+1111: system clock divided by 512
+*/
+#define AHB_PRESCALER         0b1000
+
+/*
+0xx: AHB clock not divided
+100: AHB clock divided by 2
+101: AHB clock divided by 4
+110: AHB clock divided by 8
+111: AHB clock divided by 16
+ */
+
+#define APB1_PRESCALER        0b000
+
+#define APB2_PRESCALER        0b000
+
+
+
 
 
 
